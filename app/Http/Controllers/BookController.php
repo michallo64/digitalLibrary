@@ -21,8 +21,7 @@ class BookController extends Controller
         ]);
         $data = $request->all();
         $author = Author::whereName($data['author_id'])->get();
-
-        if (empty($author->items)) {
+        if (count($author) == 0) {
             $author = new Author();
             $author->name = $data['author_id'];
             $author->save();
